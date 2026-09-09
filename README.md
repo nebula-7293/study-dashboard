@@ -59,29 +59,29 @@ graph TD
 ### 📅 Daily Sprint Schedule (Sept 10 – Sept 21)
 *Pacing: ~1.5 to 2 hours per day with concrete milestones.*
 
-**Day 1 (Sep 10)** | **Scaffolding & Server Setup**<br>*(Virtualenv, FastAPI, REST basics)* | - Set up `.venv` & dependencies (`fastapi`, `uvicorn`, `sqlalchemy`, `pydantic`).<br>- Create project layout (`backend/`, `frontend/`).<br>- Working `GET /api/health` returning JSON.
+**Day 1 (Sep 10)** | **Scaffolding & Server Setup**<br>*(Virtualenv, FastAPI, REST basics)* <br> - Set up `.venv` & dependencies (`fastapi`, `uvicorn`, `sqlalchemy`, `pydantic`).<br>- Create project layout (`backend/`, `frontend/`).<br>- Working `GET /api/health` returning JSON.
 
-**Day 2 (Sep 11)** | **Data Modeling & SQLite**<br>*(SQLAlchemy ORM, database design)* | - Configure SQLite engine & session in `database.py`.<br>- Define DB models: `Task`, `Deadline`, `Course`, `ScheduleSlot`.<br>- Auto-create tables on startup.
+**Day 2 (Sep 11)** | **Data Modeling & SQLite**<br>*(SQLAlchemy ORM, database design)* <br> - Configure SQLite engine & session in `database.py`.<br>- Define DB models: `Task`, `Deadline`, `Course`, `ScheduleSlot`.<br>- Auto-create tables on startup.
 
-**Day 3 (Sep 12)** | **Tasks & Urgency API**<br>*(CRUD operations, Pydantic validation)* | - Pydantic schemas for Tasks (`Create`, `Response`).<br>- Endpoints: `POST /api/tasks`, `GET /api/tasks` (with `scope` & `urgency` query filters), `PATCH /api/tasks/{id}`. 
+**Day 3 (Sep 12)** | **Tasks & Urgency API**<br>*(CRUD operations, Pydantic validation)* <br> - Pydantic schemas for Tasks (`Create`, `Response`).<br>- Endpoints: `POST /api/tasks`, `GET /api/tasks` (with `scope` & `urgency` query filters), `PATCH /api/tasks/{id}`. 
 
-**Day 4 (Sep 13)** | **Deadlines & Courses API**<br>*(Query parameters, REST standards)* | - CRUD endpoints for Deadlines and Courses.<br>- Test all endpoints interactively in Swagger UI (`/docs`). 
+**Day 4 (Sep 13)** | **Deadlines & Courses API**<br>*(Query parameters, REST standards)* <br> - CRUD endpoints for Deadlines and Courses.<br>- Test all endpoints interactively in Swagger UI (`/docs`). 
 
-**Day 5 (Sep 14)** | **GPA Calculator Service & Pytest**<br>*(Algorithms, Unit Testing)* | - Implement `services/gpa_calc.py` (cumulative GPA, weighted grades).<br>- Write unit tests in `pytest` for edge cases (0 credits, letter conversion). 
+**Day 5 (Sep 14)** | **GPA Calculator Service & Pytest**<br>*(Algorithms, Unit Testing)* <br> - Implement `services/gpa_calc.py` (cumulative GPA, weighted grades).<br>- Write unit tests in `pytest` for edge cases (0 credits, letter conversion). 
 
-**Day 6 (Sep 15)** | **Frontend Base & Dashboard Shell**<br>*(CSS Grid/Flexbox, UI State)* | - Build clean responsive dashboard shell (header, sidebar/tabs, widget grid).<br>- Add global context toggle: **University** vs **Personal** vs **All**.<br>- Write `frontend/js/api.js` reusable fetch helper. 
+**Day 6 (Sep 15)** | **Frontend Base & Dashboard Shell**<br>*(CSS Grid/Flexbox, UI State)* <br> - Build clean responsive dashboard shell (header, sidebar/tabs, widget grid).<br>- Add global context toggle: **University** vs **Personal** vs **All**.<br>- Write `frontend/js/api.js` reusable fetch helper. 
 
-**Day 7 (Sep 16)** | **Widget 1: 3-Tier Emergency To-Do**<br>*(DOM manipulation, async/await)* | - Build 3 visual columns/sections: 🔴 High (Urgent), 🟡 Medium, 🟢 Low.<br>- Connect to backend: load tasks, check off tasks, add new task. 
+**Day 7 (Sep 16)** | **Widget 1: 3-Tier Emergency To-Do**<br>*(DOM manipulation, async/await)* <br> - Build 3 visual columns/sections: 🔴 High (Urgent), 🟡 Medium, 🟢 Low.<br>- Connect to backend: load tasks, check off tasks, add new task. 
 
-**Day 8 (Sep 17)** | **Widget 2: Deadlines Countdown**<br>*(Date calculations, visual cues)* | - Render upcoming exams/assignments sorted by date.<br>- Countdown badge (e.g., "In 2 days", "Tomorrow!").<br>- Filter by Uni vs Personal context. 
+**Day 8 (Sep 17)** | **Widget 2: Deadlines Countdown**<br>*(Date calculations, visual cues)* <br> - Render upcoming exams/assignments sorted by date.<br>- Countdown badge (e.g., "In 2 days", "Tomorrow!").<br>- Filter by Uni vs Personal context. 
 
-**Day 9 (Sep 18)** | **Widget 3: Pomodoro Timer**<br>*(JavaScript Timers, Audio/Events)* | - 25m work / 5m break countdown with Start, Pause, Reset.<br>- Audio chime or notification on completion.<br>- Log completed focus sessions to backend API. 
+**Day 9 (Sep 18)** | **Widget 3: Pomodoro Timer**<br>*(JavaScript Timers, Audio/Events)* <br> - 25m work / 5m break countdown with Start, Pause, Reset.<br>- Audio chime or notification on completion.<br>- Log completed focus sessions to backend API. 
 
-**Day 10 (Sep 19)** | **Widget 4 & 5: GPA & Schedule**<br>*(Data visualization, tabular data)* | - GPA Widget: shows current GPA, credits summary, and target grade helper.<br>- Schedule Widget: "Today's Agenda" or weekly timetable cards. 
+**Day 10 (Sep 19)** | **Widget 4 & 5: GPA & Schedule**<br>*(Data visualization, tabular data)* <br> - GPA Widget: shows current GPA, credits summary, and target grade helper.<br>- Schedule Widget: "Today's Agenda" or weekly timetable cards. 
 
-**Day 11 (Sep 20)** | **External API Integration & Polish**<br>*(Consuming 3rd party APIs, UI refinement)* | - Practice external API: daily motivational quote / study tip banner.<br>- Smooth transitions, empty states, error banners. 
+**Day 11 (Sep 20)** | **External API Integration & Polish**<br>*(Consuming 3rd party APIs, UI refinement)* <br> - Practice external API: daily motivational quote / study tip banner.<br>- Smooth transitions, empty states, error banners. 
 
-**Day 12 (Sep 21)** | **Final Testing & Demo Ready!**<br>*(End-to-end verification, git commit)* | - Full walkthrough testing (all widgets talk to backend).<br>- Document setup instructions in README.<br>- Project completion celebration! 🚀 
+**Day 12 (Sep 21)** | **Final Testing & Demo Ready!**<br>*(End-to-end verification, git commit)* <br> - Full walkthrough testing (all widgets talk to backend).<br>- Document setup instructions in README.<br>- Project completion celebration! 🚀 
 
 ---
 

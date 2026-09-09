@@ -6,12 +6,12 @@
 
 ---
 
-### [ ] Day 1 (Thu, Sep 10): Scaffolding & Server Setup
-- [ ] Initialize Python virtual environment (`.venv`)
-- [ ] Install base packages: `fastapi`, `uvicorn[standard]`, `sqlalchemy`, `pydantic`
-- [ ] Create directory structure (`backend/app/`, `frontend/`)
-- [ ] Write first FastAPI app in `backend/app/main.py` with `GET /api/health`
-- [ ] Test server locally (`uvicorn backend.app.main:app --reload`)
+### [x] Day 1 (Thu, Sep 10): Scaffolding & Server Setup
+- [x] Initialize Python virtual environment (`.venv`)
+- [x] Install base packages: `fastapi`, `uvicorn[standard]`, `sqlalchemy`, `pydantic`
+- [x] Create directory structure (`backend/app/`, `frontend/`)
+- [x] Write first FastAPI app in `backend/app/main.py` with `GET /api/health`
+- [x] Test server locally (`uvicorn backend.app.main:app --reload`)
 
 ### [ ] Day 2 (Fri, Sep 11): Data Modeling & SQLite
 - [ ] Setup `database.py` with SQLite connection & engine
