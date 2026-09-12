@@ -22,13 +22,13 @@
 - [x] Verify SQLite DB file and tables create automatically on startup
 
 ### Day 3 (Sat, Sep 12): Tasks & Urgency REST API
-- [ ] Define Pydantic request/response schemas in `schemas/task.py`
-- [ ] Create router in `routers/tasks.py`:
+- [x] Define Pydantic request/response schemas in `schemas/task.py`
+- [x] Create router in `routers/tasks.py`:
   - `GET /api/tasks` (with optional `?scope=uni&urgency=high` filters)
   - `POST /api/tasks` (create task)
   - `PATCH /api/tasks/{task_id}` (toggle completed or edit)
   - `DELETE /api/tasks/{task_id}`
-- [ ] Test all task operations in Swagger UI (`http://127.0.0.1:8000/docs`)
+- [x] Test all task operations in Swagger UI (`http://127.0.0.1:8000/docs`)
 
 ### Day 4 (Sun, Sep 13): Deadlines & Courses REST API
 - [ ] Create schemas & routers for Deadlines (`GET`, `POST`, `DELETE`)

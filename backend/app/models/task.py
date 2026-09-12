@@ -1,18 +1,6 @@
-from sqlmodel import Field, SQLModel
-from datetime import date
-from enum import StrEnum
-from backend.app.models.enums import Scope
+from sqlmodel import Field
+from backend.app.schemas.task import TaskBase
+from backend.app.models.enums import Urgency
 
-class Urgency(StrEnum):
-    HIGH = "HIGH"
-    MEDIUM = "MEDIUM"
-    LOW = "LOW"
-
-class Task(SQLModel, table=True):
+class Task(TaskBase, table=True):
     id: int | None = Field(default=None, primary_key=True)
-    title: str = Field(index=True)
-    description: str | None = Field(index=True)
-    urgency: Urgency = Field(index=True)
-    completed: bool = Field(default=False)
-    scope: Scope = Field(default=Scope.UNI, index=True)
-    due_date: date | None = Field(default=None)
