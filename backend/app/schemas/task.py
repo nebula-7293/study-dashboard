@@ -1,6 +1,7 @@
 from sqlmodel import SQLModel
 from datetime import date
-from backend.app.models.enums import Scope, Urgency
+
+from backend.app.enums import Scope, Urgency
 
 class TaskBase(SQLModel):
     title: str
@@ -13,7 +14,7 @@ class TaskBase(SQLModel):
 class TaskCreate(TaskBase):
     pass
 
-class TaskUpdate(TaskBase):
+class TaskUpdate(SQLModel):
     title: str | None = None
     description: str | None = None
     urgency: Urgency | None = None

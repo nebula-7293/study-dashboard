@@ -1,5 +1,4 @@
-from .task import Task, Urgency
+from .task import Task
 from .course import Course
-from .deadline import Deadline, DeadlineType
-from .schedule import Schedule, Weekdays
-from .enums import Scope
+from .deadline import Deadline
+from .schedule import Schedule

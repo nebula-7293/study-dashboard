@@ -1,13 +1,7 @@
-from sqlmodel import Field, SQLModel, Relationship
-from typing import Optional
-from backend.app.models.enums import Scope
+from sqlmodel import Field, Relationship
 
-class Course(SQLModel, table=True):
+from backend.app.schemas.course import CourseBase
+
+class Course(CourseBase, table=True):
     id: int | None = Field(default=None, primary_key=True)
-    title: str = Field(index=True)
-    code: str = Field(index=True)
-    credits: int = Field(default=None)
-    current_grade: float | None = Field(default=None)
-    target_grade: float | None = Field(default=None)
     deadlines: list["Deadline"] = Relationship(back_populates="course")
-    scope: Scope = Field(default=Scope.UNI, index=True)

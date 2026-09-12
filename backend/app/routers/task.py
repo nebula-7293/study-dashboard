@@ -5,6 +5,7 @@ from sqlmodel import select
 from backend.app.database import SessionDep
 from backend.app.schemas.task import TaskCreate, TaskUpdate
 from backend.app.models.task import Task
+from backend.app.enums import Urgency, Scope
 
 router = APIRouter(prefix="/api/tasks", tags=["task"])
 
@@ -19,8 +20,17 @@ def create_task(task: TaskCreate, session: SessionDep):
     return db_task
 
 @router.get("/", response_model=list[Task])
-def read_tasks(session: SessionDep, offset: int = 0, limit: Annotated[int, Query(le=100)] = 100) -> list[Task]:
-    db_task = session.exec(select(Task).offset(offset).limit(limit)).all()
+def read_tasks(session: SessionDep, urgency: Urgency | None = None, completed: bool | None = None, scope: Scope | None = None, offset: int = 0, limit: Annotated[int, Query(le=100)] = 100):
+    query = select(Task)
+
+    if urgency is not None:
+        query = query.where(Task.urgency == urgency)
+    if completed is not None:
+        query = query.where(Task.completed == completed)
+    if scope is not None:
+        query = query.where(Task.scope == scope)
+
+    db_task = session.exec(query.offset(offset).limit(limit)).all()
     return db_task
 
 @router.get("/{task_id}", response_model=Task)
@@ -41,8 +51,6 @@ def update_task(task_id: int, session: SessionDep, task: TaskUpdate):
     session.commit()
     session.refresh(db_task)
     return db_task
-
-
 
 @router.delete("/{task_id}")
 def delete_task(task_id: int, session: SessionDep):

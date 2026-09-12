@@ -3,6 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from backend.app.database import create_db
 from backend.app.routers import task
+from backend.app.routers import deadline
+from backend.app.routers import course
+from backend.app.routers import schedule
 
 app = FastAPI(
     title="StudyPulse API",
@@ -27,3 +30,6 @@ def health_check():
     return {"status": "healthy", "message": "StudyPulse backend engine is running!"}
 
 app.include_router(task.router)
+app.include_router(deadline.router)
+app.include_router(course.router)
+app.include_router(schedule.router)

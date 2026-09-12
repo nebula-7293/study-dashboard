@@ -31,10 +31,11 @@
 - [x] Test all task operations in Swagger UI (`http://127.0.0.1:8000/docs`)
 
 ### Day 4 (Sun, Sep 13): Deadlines & Courses REST API
-- [ ] Create schemas & routers for Deadlines (`GET`, `POST`, `DELETE`)
-- [ ] Create schemas & routers for Courses (`GET`, `POST`, `PATCH`, `DELETE`)
-- [ ] Test filtering by `scope` (university vs personal)
-- [ ] Review REST response status codes (200, 201, 404)
+- [x] Create schemas & routers for Deadlines (`GET`, `POST`, `DELETE`)
+- [x] Create schemas & routers for Courses (`GET`, `POST`, `PATCH`, `DELETE`)
+- [x] Create schemas & routers for Schedules (`GET`, `POST`, `PATCH`, `DELETE`)
+- [x] Test filtering by `scope` (university vs personal)
+- [x] Review REST response status codes (200, 201, 404)
 
 ### Day 5 (Mon, Sep 14): GPA Calculator Logic & Pytest
 - [ ] Write GPA calculation algorithms in `services/gpa_calc.py`:

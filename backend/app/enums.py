@@ -10,7 +10,7 @@ class Urgency(StrEnum):
     LOW = "LOW"
 
 class DeadlineType(StrEnum):
-    ASSIGMENT = "assigment"
+    ASSIGNMENT = "assignment"
     EXAM = "exam"
 
 class Weekdays(StrEnum):
