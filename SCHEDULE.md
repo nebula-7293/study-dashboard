@@ -38,12 +38,12 @@
 - [x] Review REST response status codes (200, 201, 404)
 
 ### Day 5 (Mon, Sep 14): GPA Calculator Logic & Pytest
-- [ ] Write GPA calculation algorithms in `services/gpa_calc.py`:
+- [x] Write GPA calculation algorithms in `services/gpa_calc.py`:
   - Semester GPA (weighted average of grade points by credits)
   - Cumulative GPA
   - What-if grade projection
-- [ ] Set up `pytest` in `backend/tests/test_gpa.py`
-- [ ] Run automated tests to verify math & edge cases (e.g., zero credits)
+- [x] Set up `pytest` in `backend/tests/test_gpa.py`
+- [x] Run automated tests to verify math & edge cases (e.g., zero credits)
 
 ### Day 6 (Tue, Sep 15): Frontend Base & Dashboard Shell
 - [ ] Create `frontend/index.html` with Tailwind CSS grid layout

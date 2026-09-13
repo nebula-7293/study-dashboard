@@ -1,6 +1,4 @@
-from sqlmodel import Field, SQLModel
-from datetime import time
-
+from sqlmodel import Field
 from backend.app.schemas.schedule import ScheduleBase
 
 

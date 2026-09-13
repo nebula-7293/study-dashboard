@@ -6,6 +6,7 @@ from backend.app.database import SessionDep
 from backend.app.schemas.course import CourseCreate, CourseUpdate
 from backend.app.models.course import Course
 from backend.app.enums import Scope
+from backend.app.services.gpa_calc import calculate_gpa
 
 router = APIRouter(prefix="/api/courses", tags=["course"])
 
@@ -26,6 +27,14 @@ def read_courses(session: SessionDep, scope: Scope | None = None, offset: int=0,
 
     db_course = session.exec(query.offset(offset).limit(limit)).all()
     return db_course
+
+@router.get("/gpa")
+def get_gpa(session: SessionDep, scope: Scope | None = None):
+    query = select(Course).where(Course.scope == scope)
+    courses = session.exec(query).all()
+    
+    return calculate_gpa(courses)
+
 
 @router.get("/{course_id}", response_model=Course)
 def read_course(course_id: int, session: SessionDep):

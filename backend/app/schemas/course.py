@@ -7,7 +7,6 @@ class CourseBase(SQLModel):
     code: str | None = None
     credits: float | None = None
     current_grade: float | None = None
-    target_grade: float | None = None
     scope: Scope = Scope.UNI
 
 class CourseCreate(CourseBase):
@@ -18,5 +17,4 @@ class CourseUpdate(SQLModel):
     code: str | None = None
     credits: float | None = None
     current_grade: float | None = None
-    target_grade: float | None = None
     scope: Scope | None = None
