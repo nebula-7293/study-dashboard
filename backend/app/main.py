@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.app.database import create_db
@@ -33,3 +34,6 @@ app.include_router(task.router)
 app.include_router(deadline.router)
 app.include_router(course.router)
 app.include_router(schedule.router)
+
+# Mount frontend static files AFTER all API routers so /api/* is never shadowed
+app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")

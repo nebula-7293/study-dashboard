@@ -13,7 +13,7 @@ class CourseCreate(CourseBase):
     pass
 
 class CourseUpdate(SQLModel):
-    title: str | None
+    title: str | None = None
     code: str | None = None
     credits: float | None = None
     current_grade: float | None = None

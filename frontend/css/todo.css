@@ -1,0 +1,198 @@
+/* To-Do Module Styles */
+
+.todo-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.todo-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 3-Tier Column Layout */
+.todo-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.todo-column {
+  background-color: var(--bg-surface-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  min-height: 480px;
+}
+
+.todo-column-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.todo-column-title-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.todo-column-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+}
+
+.indicator-high { background-color: var(--color-high); }
+.indicator-medium { background-color: var(--color-medium); }
+.indicator-low { background-color: var(--color-low); }
+
+.todo-column-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.todo-column-count {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-surface);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Task List & Card */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.task-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  box-shadow: var(--shadow-xs);
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+.task-card:hover {
+  box-shadow: var(--shadow-sm);
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+}
+
+.task-card.completed {
+  opacity: 0.65;
+  background-color: #fafaf9;
+}
+
+.task-card.completed .task-title {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.task-card-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.task-card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.task-title {
+  font-size: 0.925rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.35;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.task-description {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+  line-height: 1.4;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.task-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding-top: 4px;
+}
+
+.task-date-badge {
+  font-size: 0.725rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: var(--bg-surface-secondary);
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+}
+
+.task-date-badge.overdue {
+  color: var(--color-high);
+  background-color: var(--color-high-bg);
+}
+
+.task-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  flex-shrink: 0;
+  opacity: 0.7;
+  transition: opacity var(--transition-fast);
+}
+
+.task-card:hover .task-card-actions {
+  opacity: 1;
+}
+
+/* Urgency Engine Suggestion Alert in Modal */
+.urgency-suggestion-box {
+  background-color: var(--primary-subtle);
+  border: 1px dashed var(--primary-border);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.urgency-suggestion-text {
+  font-size: 0.825rem;
+  color: var(--primary);
+  font-weight: 600;
+}

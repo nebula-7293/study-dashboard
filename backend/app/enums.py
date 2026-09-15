@@ -14,10 +14,22 @@ class DeadlineType(StrEnum):
     EXAM = "exam"
 
 class Weekdays(StrEnum):
-    Monday = "Monday"
-    Tuesday = "Tuesday"
-    Wednesday = "Wednesday"
-    Thursday = "Thursday"
-    Friday = "Friday"
-    Saturday = "Saturday"
-    Sunday = "Sunday"
+    MONDAY = "Monday"
+    TUESDAY = "Tuesday"
+    WEDNESDAY = "Wednesday"
+    THURSDAY = "Thursday"
+    FRIDAY = "Friday"
+    SATURDAY = "Saturday"
+    SUNDAY = "Sunday"
+
+class Occasion(StrEnum):
+    LECTURE = "Lecture"
+    LAB = "Lab"
+    SEMINAR = "Seminar"
+    MISCELLANEOUS = "Miscellaneous"
+    WORK = "Work"
+
+class RepeatFrequency(StrEnum):
+    NONE = "None"
+    DAILY = "Daily"
+    WEEKLY = "Weekly"

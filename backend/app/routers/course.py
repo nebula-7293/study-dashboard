@@ -30,11 +30,12 @@ def read_courses(session: SessionDep, scope: Scope | None = None, offset: int=0,
 
 @router.get("/gpa")
 def get_gpa(session: SessionDep, scope: Scope | None = None):
-    query = select(Course).where(Course.scope == scope)
+    query = select(Course)
+    if scope is not None:
+        query = query.where(Course.scope == scope)
     courses = session.exec(query).all()
     
     return calculate_gpa(courses)
-
 
 @router.get("/{course_id}", response_model=Course)
 def read_course(course_id: int, session: SessionDep):

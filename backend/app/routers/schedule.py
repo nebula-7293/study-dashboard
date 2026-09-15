@@ -5,25 +5,30 @@ from sqlmodel import select
 from backend.app.database import SessionDep
 from backend.app.schemas.schedule import ScheduleCreate, ScheduleUpdate
 from backend.app.models.schedule import Schedule
-from backend.app.enums import Scope, Weekdays
+from backend.app.models.course import Course
+from backend.app.enums import Scope, Occasion
 
 router = APIRouter(prefix="/api/schedules", tags=["schedule"])
 
 @router.post("/", response_model=Schedule)
 def create_schedule(schedule: ScheduleCreate, session: SessionDep):
+    if schedule.course_id is not None:
+        course = session.get(Course, schedule.course_id)
+        if not course:
+            raise HTTPException(status_code=400, detail="Course does not exist")
+        
     db_schedule = Schedule.model_validate(schedule)
-
     session.add(db_schedule)
     session.commit()
     session.refresh(db_schedule)
     return db_schedule
 
 @router.get("/", response_model=list[Schedule])
-def read_schedules(session: SessionDep, day: Weekdays | None = None, location: str | None = None, scope: Scope | None = None, offset: int = 0, limit: Annotated[int, Query(le=100)] = 100):
+def read_schedules(session: SessionDep, type: Occasion | None = None, location: str | None = None, scope: Scope | None = None, offset: int = 0, limit: Annotated[int, Query(le=100)] = 100):
     query = select(Schedule)
 
-    if day is not None: 
-        query = query.where(Schedule.day == day)
+    if type is not None: 
+        query = query.where(Schedule.type == type)
     if location is not None: 
         query = query.where(Schedule.location == location)
     if scope is not None:
