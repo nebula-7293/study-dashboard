@@ -162,11 +162,62 @@
   border: 1px solid var(--primary-border);
 }
 
+/* Bento Grid Row Stretch for Pomodoro and Tasks */
+.dashboard-main-row {
+  align-items: stretch;
+}
+
+.dashboard-main-row > .col-5,
+.dashboard-main-row > .col-7 {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-main-row > .col-5 > .bento-card,
+.dashboard-main-row > .col-7 > .bento-card {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Dashboard Priority Tasks Widget */
+.dashboard-todo-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#dashboard-task-list,
+.dashboard-task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  min-height: 0;
+  max-height: 350px !important;
+  overflow-y: auto !important;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.dashboard-todo-card .task-card {
+  padding: 12px 14px;
+  flex-shrink: 0;
+}
+
 /* Mini Agenda Widget */
 .agenda-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
 }
 
 .agenda-item {

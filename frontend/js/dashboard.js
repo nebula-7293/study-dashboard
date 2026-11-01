@@ -105,10 +105,10 @@ export function renderDashboard() {
     </div>
 
     <!-- Main Bento Grid Modules -->
-    <div class="bento-grid">
+    <div class="bento-grid dashboard-main-row" style="align-items: stretch;">
       <!-- Bento Widget: Pomodoro Focus Timer -->
-      <div class="col-5">
-        <div class="bento-card pomodoro-card">
+      <div class="col-5" style="display: flex; flex-direction: column;">
+        <div class="bento-card pomodoro-card" style="height: 100%; flex: 1;">
           <div class="bento-card-header" style="width: 100%;">
             <div class="bento-card-title-group">
               <div class="bento-card-icon">${getIcon('timer')}</div>
@@ -157,9 +157,9 @@ export function renderDashboard() {
       </div>
 
       <!-- Bento Widget: Quick To-Do List -->
-      <div class="col-7">
-        <div class="bento-card" style="min-height: 460px;">
-          <div class="bento-card-header">
+      <div class="col-7" style="display: flex; flex-direction: column;">
+        <div class="bento-card dashboard-todo-card" style="height: 100%; flex: 1; display: flex; flex-direction: column;">
+          <div class="bento-card-header" style="flex-shrink: 0;">
             <div class="bento-card-title-group">
               <div class="bento-card-icon">${getIcon('tasks')}</div>
               <div>
@@ -177,7 +177,7 @@ export function renderDashboard() {
             </div>
           </div>
 
-          <div class="task-list" id="dashboard-task-list">
+          <div class="task-list dashboard-task-list" id="dashboard-task-list" style="flex: 1; min-height: 0; max-height: 350px; overflow-y: auto;">
             ${renderDashboardTasks(tasks)}
           </div>
         </div>
@@ -255,7 +255,7 @@ function renderDashboardTasks(tasks) {
     if (a.completed !== b.completed) return a.completed ? 1 : -1;
     const urgencyWeight = { HIGH: 3, MEDIUM: 2, LOW: 1 };
     return (urgencyWeight[b.urgency] || 0) - (urgencyWeight[a.urgency] || 0);
-  }).slice(0, 6); // Top 6
+  });
 
   return sorted.map(t => {
     const countdown = t.due_date ? formatCountdown(t.due_date) : null;

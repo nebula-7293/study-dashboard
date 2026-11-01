@@ -225,11 +225,17 @@
 
   .todo-column {
     min-height: auto !important;
+    max-height: 420px !important;
+    height: auto !important;
     padding: 16px 18px !important;
     border-radius: var(--radius-lg) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
   }
 
   .todo-column-header {
+    flex-shrink: 0 !important;
     padding-bottom: 10px !important;
     margin-bottom: 12px !important;
   }
@@ -242,6 +248,13 @@
     display: flex !important;
     flex-direction: column !important;
     gap: 10px !important;
+    flex: 1 !important;
+    min-height: 0 !important;
+    max-height: 330px !important;
+    overflow-y: auto !important;
+    padding-right: 6px !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: #cbd5e1 transparent !important;
   }
 
   .task-card {
@@ -728,6 +741,20 @@
     font-size: 0.7rem !important;
   }
 
+  /* Dashboard Priority Tasks & Agenda scrolling on Mobile */
+  .dashboard-todo-card {
+    max-height: 420px !important;
+  }
+
+  #dashboard-task-list,
+  .dashboard-task-list {
+    max-height: 330px !important;
+  }
+
+  .agenda-list {
+    max-height: 280px !important;
+  }
+
   /* Agenda list on Mobile */
   .agenda-item {
     padding: 8px 10px;
@@ -1082,11 +1109,17 @@
 
   .todo-column {
     min-height: auto !important;
+    max-height: 380px !important;
+    height: auto !important;
     padding: 12px 10px;
     border-radius: var(--radius-md);
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
   }
 
   .todo-column-header {
+    flex-shrink: 0 !important;
     padding-bottom: 6px;
     margin-bottom: 6px;
   }
@@ -1097,6 +1130,13 @@
 
   .task-list {
     gap: 6px;
+    flex: 1 !important;
+    min-height: 0 !important;
+    max-height: 310px !important;
+    overflow-y: auto !important;
+    padding-right: 4px !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: #cbd5e1 transparent !important;
   }
 
   .task-card {

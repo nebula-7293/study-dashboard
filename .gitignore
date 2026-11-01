@@ -19,5 +19,5 @@ __pycache__/
 .vscode/
 .idea/
 
-# Text files
-commands.txt
+# Backup files
+.bak

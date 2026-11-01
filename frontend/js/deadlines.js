@@ -8,6 +8,7 @@ import { api } from './api.js';
 import { state } from './state.js';
 import { getIcon } from './icons.js';
 import { formatCountdown } from './urgency.js';
+import { showConfirmModal } from './confirm.js';
 
 let editingDeadlineId = null;
 let currentTab = 'upcoming'; // 'upcoming' | 'in_progress' | 'completed' | 'list'
@@ -366,7 +367,11 @@ function attachDeadlineEvents() {
       const el = e.target.closest('[data-deadline-id]');
       if (!el) return;
       const deadlineId = Number(el.dataset.deadlineId);
-      if (confirm('Delete this deadline?')) {
+      const confirmed = await showConfirmModal({
+        title: 'Delete Deadline',
+        message: 'Are you sure you want to delete it?'
+      });
+      if (confirmed) {
         try {
           await api.deadlines.delete(deadlineId);
           state.deadlines = state.deadlines.filter(d => d.id !== deadlineId);

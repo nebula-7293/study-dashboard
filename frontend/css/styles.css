@@ -1,13 +1,15 @@
 /* StudyPulse Master Stylesheet */
-@import url('variables.css?v=2.4');
-@import url('base.css?v=2.4');
-@import url('layout.css?v=2.4');
-@import url('components.css?v=2.4');
-@import url('dashboard.css?v=2.4');
-@import url('todo.css?v=2.4');
-@import url('schedule.css?v=2.4');
-@import url('deadlines.css?v=2.4');
-@import url('courses.css?v=2.4');
-@import url('grades.css?v=2.4');
-@import url('pomodoro.css?v=2.4');
-@import url('responsive.css?v=2.4');
+@import url('variables.css?v=2.9');
+@import url('base.css?v=2.9');
+@import url('layout.css?v=2.9');
+@import url('components.css?v=2.9');
+@import url('dashboard.css?v=2.9');
+@import url('todo.css?v=2.9');
+@import url('schedule.css?v=2.9');
+@import url('deadlines.css?v=2.9');
+@import url('courses.css?v=2.9');
+@import url('grades.css?v=2.9');
+@import url('pomodoro.css?v=2.9');
+@import url('responsive.css?v=2.9');
+
+

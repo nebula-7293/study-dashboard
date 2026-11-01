@@ -9,6 +9,7 @@ import { state } from './state.js';
 import { getIcon } from './icons.js';
 import { openDeadlineModal } from './deadlines.js';
 import { openScheduleModal, getOccasionColor } from './schedule.js';
+import { showConfirmModal } from './confirm.js';
 
 let editingCourseId = null;
 
@@ -158,7 +159,11 @@ function attachCourseEvents() {
     btn.addEventListener('click', async (e) => {
       e.stopPropagation();
       const courseId = Number(btn.dataset.courseId);
-      if (confirm('Delete this course? Linked deadlines and schedules might also be impacted.')) {
+      const confirmed = await showConfirmModal({
+        title: 'Delete Course',
+        message: 'Are you sure you want to delete it?'
+      });
+      if (confirmed) {
         try {
           await api.courses.delete(courseId);
           state.courses = state.courses.filter(c => c.id !== courseId);

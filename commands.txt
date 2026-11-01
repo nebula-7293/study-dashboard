@@ -1,0 +1,13 @@
+sqlite3 database.db -> check db and tables
+
+.mode table -> change to table format
+.tables -> list all of the tables
+SELECT * FROM task; -> see the table
+.exit
+
+uvicorn backend.app.main:app --reload -> run the api
+
+source .venv/bin/activate -> activate the enviroment
+
+
+In classes index=True only the properties you filter by

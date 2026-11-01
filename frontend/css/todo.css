@@ -20,6 +20,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+  align-items: start;
 }
 
 .todo-column {
@@ -30,9 +31,13 @@
   display: flex;
   flex-direction: column;
   min-height: 480px;
+  max-height: 640px;
+  height: 640px;
+  overflow: hidden;
 }
 
 .todo-column-header {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -79,6 +84,11 @@
   flex-direction: column;
   gap: 12px;
   flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
 }
 
 .task-card {

@@ -11,6 +11,7 @@ import { loadDeadlines, renderDeadlines, initDeadlineForm, openDeadlineModal } f
 import { loadCourses, renderCourses, initCourseForm, openCourseModal } from './courses.js';
 import { loadSchedules, renderSchedule, initScheduleForm, openScheduleModal } from './schedule.js';
 import { loadGrades, renderGrades } from './grades.js';
+import { initConfirmModal, closeConfirmModal } from './confirm.js';
 
 const VIEW_TITLES = {
   dashboard: 'StudyPulse Dashboard',
@@ -34,6 +35,7 @@ async function init() {
   initCourseForm();
   initScheduleForm();
   initPomodoroSettingsForm();
+  initConfirmModal();
 
   // 3. Navigation setup
   setupNavigation();
@@ -255,6 +257,7 @@ function setupGlobalQuickAdd() {
 function setupKeyboardShortcuts() {
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
+      closeConfirmModal(false);
       document.querySelectorAll('.modal-backdrop.open').forEach(m => m.classList.remove('open'));
       document.querySelectorAll('.drawer-backdrop.open').forEach(d => d.classList.remove('open'));
     }
@@ -264,7 +267,11 @@ function setupKeyboardShortcuts() {
   document.querySelectorAll('.modal-backdrop').forEach(modal => {
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
-        modal.classList.remove('open');
+        if (modal.id === 'confirm-modal') {
+          closeConfirmModal(false);
+        } else {
+          modal.classList.remove('open');
+        }
       }
     });
   });

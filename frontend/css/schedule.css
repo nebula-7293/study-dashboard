@@ -281,6 +281,14 @@
   transform: scale(1.02);
 }
 
+.time-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  width: 100%;
+}
+
 .time-block-title {
   font-weight: 700;
   color: var(--text-primary);
@@ -288,6 +296,31 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  flex: 1;
+}
+
+.btn-delete-time-block {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--radius-xs);
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  opacity: 0.75;
+  transition: all var(--transition-fast);
+}
+
+.btn-delete-time-block:hover {
+  opacity: 1;
+  background: #ef4444;
+  color: white;
+  transform: scale(1.1);
 }
 
 .time-block-time {

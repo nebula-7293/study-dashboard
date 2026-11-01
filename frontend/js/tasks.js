@@ -7,6 +7,7 @@ import { api } from './api.js';
 import { state } from './state.js';
 import { getIcon } from './icons.js';
 import { calculateUrgencySuggestion, formatCountdown } from './urgency.js';
+import { showConfirmModal } from './confirm.js';
 
 let editingTaskId = null;
 
@@ -192,7 +193,11 @@ function attachTaskEventListeners() {
     btn.addEventListener('click', async (e) => {
       const card = e.target.closest('.task-card');
       const taskId = Number(card.dataset.taskId);
-      if (confirm('Are you sure you want to delete this task?')) {
+      const confirmed = await showConfirmModal({
+        title: 'Delete Task',
+        message: 'Are you sure you want to delete it?'
+      });
+      if (confirmed) {
         try {
           await api.tasks.delete(taskId);
           state.tasks = state.tasks.filter(t => t.id !== taskId);

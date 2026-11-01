@@ -6,6 +6,7 @@
 import { api } from './api.js';
 import { state } from './state.js';
 import { getIcon } from './icons.js';
+import { showConfirmModal } from './confirm.js';
 
 let currentCalendarDate = new Date();
 let scheduleViewMode = 'month'; // 'month' | 'week'
@@ -306,7 +307,15 @@ function renderWeekView() {
 
       return `
         <div class="time-block-card" style="top: ${topPx}px; height: ${heightPx}px; border-left-color: ${color}; background-color: ${color}15;" data-schedule-id="${ev.id}">
-          <div class="time-block-title">${escapeHtml(ev.title)}</div>
+          <div class="time-block-header">
+            <div class="time-block-title">${escapeHtml(ev.title)}</div>
+            <button type="button" class="btn-delete-time-block" data-schedule-id="${ev.id}" title="Delete occasion" aria-label="Delete occasion">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              </svg>
+            </button>
+          </div>
           <div class="time-block-time">${ev.start_time.slice(0, 5)} - ${ev.end_time.slice(0, 5)}</div>
           ${ev.location ? `<div style="font-size: 0.675rem; color: var(--text-muted);">${escapeHtml(ev.location)}</div>` : ''}
         </div>
@@ -399,6 +408,28 @@ function attachScheduleEvents() {
       const schedId = Number(block.dataset.scheduleId);
       const sched = state.schedules.find(s => s.id === schedId);
       if (sched) openScheduleModal(sched);
+    });
+  });
+
+  // Delete button on weekly time block
+  document.querySelectorAll('.btn-delete-time-block').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      const schedId = Number(btn.dataset.scheduleId);
+      const confirmed = await showConfirmModal({
+        title: 'Delete Occasion',
+        message: 'Are you sure you want to delete it?'
+      });
+      if (confirmed) {
+        try {
+          await api.schedules.delete(schedId);
+          state.schedules = state.schedules.filter(s => s.id !== schedId);
+          renderSchedule();
+          state.emit('schedulesUpdated', state.schedules);
+        } catch (err) {
+          alert(`Error deleting occasion: ${err.message}`);
+        }
+      }
     });
   });
 }
@@ -497,7 +528,11 @@ export function openDayAgendaDrawer(dateStr) {
   document.querySelectorAll('.btn-agenda-delete').forEach(btn => {
     btn.addEventListener('click', async () => {
       const id = Number(btn.dataset.id);
-      if (confirm('Delete this occasion?')) {
+      const confirmed = await showConfirmModal({
+        title: 'Delete Occasion',
+        message: 'Are you sure you want to delete it?'
+      });
+      if (confirmed) {
         try {
           await api.schedules.delete(id);
           state.schedules = state.schedules.filter(s => s.id !== id);
@@ -545,6 +580,16 @@ export function openScheduleModal(schedule = null, prefilledDate = null, presele
   form.elements['title'].value = schedule ? schedule.title : '';
   form.elements['type'].value = schedule ? schedule.type : 'Lecture';
   form.elements['course_id'].value = schedule && schedule.course_id ? schedule.course_id : (preselectedCourseId || '');
+  if (!schedule && preselectedCourseId) {
+    const preCourse = state.getCourseById(Number(preselectedCourseId));
+    if (preCourse) form.elements['title'].value = preCourse.title;
+  }
+
+  // Delete button visibility in modal
+  const deleteBtn = document.getElementById('btn-delete-schedule-modal');
+  if (deleteBtn) {
+    deleteBtn.style.display = schedule ? 'inline-flex' : 'none';
+  }
   form.elements['day'].value = schedule && schedule.day ? schedule.day : (prefilledDate || formatDateISO(new Date()));
   form.elements['start_time'].value = schedule ? schedule.start_time.slice(0, 5) : '09:00';
   form.elements['end_time'].value = schedule ? schedule.end_time.slice(0, 5) : '10:30';
@@ -585,13 +630,37 @@ export function initScheduleForm() {
   const form = document.getElementById('schedule-form');
   if (!form) return;
 
-  // Auto-fill title if course chosen and title is empty
+  // Auto-fill or update title if course chosen or changed
   form.elements['course_id']?.addEventListener('change', (e) => {
     const courseId = Number(e.target.value);
     const titleInput = form.elements['title'];
-    if (courseId && !titleInput.value) {
+    if (courseId) {
       const course = state.getCourseById(courseId);
       if (course) titleInput.value = course.title;
+    }
+  });
+
+  // Delete button inside schedule modal (when editing existing occasion)
+  document.getElementById('btn-delete-schedule-modal')?.addEventListener('click', async () => {
+    if (!editingScheduleId) return;
+    const schedId = editingScheduleId;
+    const confirmed = await showConfirmModal({
+      title: 'Delete Occasion',
+      message: 'Are you sure you want to delete it?'
+    });
+    if (confirmed) {
+      try {
+        await api.schedules.delete(schedId);
+        state.schedules = state.schedules.filter(s => s.id !== schedId);
+        closeScheduleModal();
+        if (selectedDayForAgenda) {
+          openDayAgendaDrawer(selectedDayForAgenda);
+        }
+        renderSchedule();
+        state.emit('schedulesUpdated', state.schedules);
+      } catch (err) {
+        alert(`Error deleting occasion: ${err.message}`);
+      }
     }
   });
 
