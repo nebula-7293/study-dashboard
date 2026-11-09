@@ -7,25 +7,27 @@ from backend.app.schemas.schedule import ScheduleCreate, ScheduleUpdate
 from backend.app.models.schedule import Schedule
 from backend.app.models.course import Course
 from backend.app.enums import Scope, Occasion
+from backend.app.dependencies import CurrentUserDep 
 
 router = APIRouter(prefix="/api/schedules", tags=["schedule"])
 
 @router.post("/", response_model=Schedule)
-def create_schedule(schedule: ScheduleCreate, session: SessionDep):
+def create_schedule(schedule: ScheduleCreate, user: CurrentUserDep, session: SessionDep):
     if schedule.course_id is not None:
         course = session.get(Course, schedule.course_id)
         if not course:
             raise HTTPException(status_code=400, detail="Course does not exist")
         
     db_schedule = Schedule.model_validate(schedule)
+    db_schedule.user_id = user.id
     session.add(db_schedule)
     session.commit()
     session.refresh(db_schedule)
     return db_schedule
 
 @router.get("/", response_model=list[Schedule])
-def read_schedules(session: SessionDep, type: Occasion | None = None, location: str | None = None, scope: Scope | None = None, offset: int = 0, limit: Annotated[int, Query(le=100)] = 100):
-    query = select(Schedule)
+def read_schedules(session: SessionDep, user: CurrentUserDep, type: Occasion | None = None, location: str | None = None, scope: Scope | None = None, offset: int = 0, limit: Annotated[int, Query(le=100)] = 100):
+    query = select(Schedule).where(Schedule.user_id == user.id)
 
     if type is not None: 
         query = query.where(Schedule.type == type)
@@ -38,16 +40,16 @@ def read_schedules(session: SessionDep, type: Occasion | None = None, location: 
     return db_schedule
 
 @router.get("/{schedule_id}", response_model=Schedule)
-def read_schedule(schedule_id: int, session: SessionDep):
+def read_schedule(schedule_id: int, user: CurrentUserDep, session: SessionDep):
     db_schedule = session.get(Schedule, schedule_id)
-    if not db_schedule:
+    if not db_schedule or db_schedule.user_id != user.id:
         raise HTTPException(status_code=404, detail="Schedule not found")
     return db_schedule
 
 @router.patch("/{schedule_id}", response_model=Schedule)
-def update_schedule(schedule_id: int, session: SessionDep, schedule: ScheduleUpdate):
+def update_schedule(schedule_id: int, user: CurrentUserDep, session: SessionDep, schedule: ScheduleUpdate):
     db_schedule = session.get(Schedule, schedule_id)
-    if not db_schedule:
+    if not db_schedule or db_schedule.user_id != user.id:
         raise HTTPException(status_code=404, detail="Schedule not found")
     schedule_data = schedule.model_dump(exclude_unset=True)
     db_schedule.sqlmodel_update(schedule_data)
@@ -57,9 +59,9 @@ def update_schedule(schedule_id: int, session: SessionDep, schedule: ScheduleUpd
     return db_schedule
 
 @router.delete("/{schedule_id}")
-def delete_schedule(schedule_id: int, session: SessionDep):
+def delete_schedule(schedule_id: int, user: CurrentUserDep, session: SessionDep):
     db_schedule = session.get(Schedule, schedule_id)
-    if not db_schedule:
+    if not db_schedule or db_schedule.user_id != user.id:
         raise HTTPException(status_code=404, detail="Schedule not found")
     session.delete(db_schedule)
     session.commit()

@@ -8,6 +8,6 @@ SELECT * FROM task; -> see the table
 uvicorn backend.app.main:app --reload -> run the api
 
 source .venv/bin/activate -> activate the enviroment
-
+source .venv/Scripts/activate -> on windows
 
 In classes index=True only the properties you filter by
