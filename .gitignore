@@ -20,4 +20,5 @@ __pycache__/
 .idea/
 
 # Backup files
-.bak
+*.bak
+*.db.bak
