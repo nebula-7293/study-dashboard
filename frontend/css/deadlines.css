@@ -1,202 +1,53 @@
-/* Deadlines Module Styles */
+/* Deadlines & Highlight Card */
 
-.deadlines-toolbar {
+.deadline-highlight-meta {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-}
-
-.deadlines-filters {
-  display: flex;
   align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
+  margin-bottom: 10px;
+  font-size: 12px;
 }
 
-/* Deadlines Grid & Cards */
-.deadlines-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 18px;
+.deadline-highlight-pill {
+  background: rgba(0, 0, 0, 0.14);
+  padding: 2px 8px;
+  border-radius: 99px;
 }
 
-.deadline-card {
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-xl);
-  padding: 20px;
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  transition: all var(--transition-normal);
-  position: relative;
-}
-
-.deadline-card:hover {
-  box-shadow: var(--shadow-md);
-  border-color: #cbd5e1;
-  transform: translateY(-2px);
-}
-
-.deadline-card.completed {
-  opacity: 0.7;
-  background-color: #fafaf9;
-}
-
-.deadline-card-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.deadline-badges {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.deadline-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1.35;
-}
-
-.deadline-card.completed .deadline-title {
-  text-decoration: line-through;
-  color: var(--text-muted);
-}
-
-.deadline-course-tag {
-  font-size: 0.8rem;
+.deadline-highlight-title {
+  font-size: 17px;
   font-weight: 600;
-  color: var(--primary);
-  background-color: var(--primary-subtle);
-  padding: 3px 10px;
-  border-radius: var(--radius-sm);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  width: fit-content;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
 }
 
-.deadline-footer {
+.deadline-highlight-sub {
+  font-size: 12.5px;
+  opacity: 0.82;
+  margin-bottom: 14px;
+}
+
+.deadline-highlight-actions {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 12px;
-  border-top: 1px solid var(--border-subtle);
-  margin-top: auto;
+  gap: 8px;
 }
 
-.deadline-countdown-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.775rem;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-}
-
-.deadline-actions {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-/* Status Segmented Control on Card */
-.status-pill-toggle {
-  display: inline-flex;
-  background-color: var(--bg-surface-secondary);
-  border-radius: var(--radius-full);
-  padding: 2px;
-  border: 1px solid var(--border-subtle);
-}
-
-.status-pill-option {
-  padding: 3px 8px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  border-radius: var(--radius-full);
+.btn-ink {
+  background: #181816;
+  color: #f5f3ef;
   border: none;
-  background: transparent;
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: all var(--transition-fast);
 }
 
-.status-pill-option.active {
-  background-color: var(--bg-surface);
-  color: var(--text-primary);
-  box-shadow: var(--shadow-xs);
-  font-weight: 700;
+.btn-ink:hover:not(:disabled) {
+  background: #2c2b29;
 }
 
-/* Deadlines Table / List View */
-.deadlines-table-card {
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-xl);
-  padding: 20px;
-  box-shadow: var(--shadow-sm);
-  overflow-x: auto;
+.btn-ink-soft {
+  background: rgba(0, 0, 0, 0.12);
+  color: #181816;
+  border: none;
 }
 
-.deadlines-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
+.btn-ink-soft:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.2);
 }
-
-.deadlines-table th {
-  padding: 12px 14px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  border-bottom: 1px solid var(--border-subtle);
-  white-space: nowrap;
-}
-
-.deadlines-table td {
-  padding: 14px;
-  font-size: 0.875rem;
-  border-bottom: 1px solid var(--border-subtle);
-  color: var(--text-primary);
-  vertical-align: middle;
-}
-
-.deadlines-table tr:last-child td {
-  border-bottom: none;
-}
-
-.deadlines-table tbody tr {
-  transition: background-color var(--transition-fast);
-}
-
-.deadlines-table tbody tr:hover {
-  background-color: var(--bg-surface-secondary);
-}
-
-.deadlines-table tr.completed td {
-  opacity: 0.65;
-}
-
-.deadlines-table tr.completed .deadline-title-cell {
-  text-decoration: line-through;
-  color: var(--text-muted);
-}
-
-.deadline-title-cell {
-  font-weight: 700;
-  color: var(--text-primary);
-}
-

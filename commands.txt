@@ -6,6 +6,7 @@ SELECT * FROM task; -> see the table
 .exit
 
 uvicorn backend.app.main:app --reload -> run the api
+python -m uvicorn backend.app.main:app --reload
 
 source .venv/bin/activate -> activate the enviroment
 source .venv/Scripts/activate -> on windows

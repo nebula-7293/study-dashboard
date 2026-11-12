@@ -17,6 +17,10 @@ async function request(endpoint, options = {}) {
 
   try {
     const response = await fetch(url, config);
+    if (response.status === 401) {
+      window.location.href = '/login.html';
+      throw new Error('Session expired. Redirecting to login...');
+    }
     if (!response.ok) {
       let errorDetail = `HTTP ${response.status}`;
       try {
@@ -86,5 +90,19 @@ export const api = {
     create: (data) => request('/schedules/', { method: 'POST', body: JSON.stringify(data) }),
     update: (id, data) => request(`/schedules/${id}`, { method: 'PATCH', body: JSON.stringify(data) }),
     delete: (id) => request(`/schedules/${id}`, { method: 'DELETE' }),
+  },
+
+  // Auth API
+  auth: {
+    me: () => request('/auth/me'),
+    updateMe: (data) => request('/auth/me', { method: 'PATCH', body: JSON.stringify(data) }),
+    logout: () => request('/auth/logout', { method: 'POST' }),
+  },
+
+  // Pomodoro API
+  pomodoro: {
+    list: (filters = {}) => request(`/pomodoros/${buildQuery(filters)}`),
+    create: (data) => request('/pomodoros/', { method: 'POST', body: JSON.stringify(data) }),
+    delete: (id) => request(`/pomodoros/${id}`, { method: 'DELETE' }),
   },
 };

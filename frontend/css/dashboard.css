@@ -1,271 +1,59 @@
-/* Dashboard Bento Widgets */
+/* Dashboard Metrics & Cards */
 
-.dashboard-stats-row {
+.metrics-row {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-  align-items: stretch;
-}
-
-.dashboard-stats-row .col-4 {
-  grid-column: span 1;
-  min-width: 0;
-  display: flex;
-}
-
-.dashboard-stats-row .stat-card {
-  width: 100%;
-  height: 100%;
-  min-width: 0;
-}
-
-.stat-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-xl);
-  padding: 20px 22px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-normal);
-}
-
-.stat-card:hover {
-  box-shadow: var(--shadow-md);
-  border-color: var(--primary-border);
-}
-
-.stat-icon-wrapper {
-  width: 50px;
-  height: 50px;
-  border-radius: var(--radius-lg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.stat-icon-wrapper.lavender {
-  background-color: var(--primary-subtle);
-  color: var(--primary);
-}
-
-.stat-icon-wrapper.emerald {
-  background-color: var(--color-low-bg);
-  color: var(--color-low);
-}
-
-.stat-icon-wrapper.amber {
-  background-color: var(--color-medium-bg);
-  color: var(--color-medium);
-}
-
-.stat-icon-wrapper.rose {
-  background-color: var(--color-high-bg);
-  color: var(--color-high);
-}
-
-.stat-content {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  flex: 1;
-  min-width: 0;
-}
-
-.stat-label {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.stat-value {
-  font-size: 1.6rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
-  line-height: 1.15;
-}
-
-.stat-unit {
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--text-muted);
-}
-
-.stat-meta-detail {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  min-width: 0;
-  overflow: hidden;
-}
-
-.stat-detail-text {
-  font-size: 0.775rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: block;
-}
-
-.stat-subtext {
-  font-size: 0.775rem;
-  color: var(--text-secondary);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-/* Progress bar inside stat card */
-.stat-progress-bar {
-  width: 100%;
-  height: 6px;
-  background-color: var(--bg-surface-secondary);
-  border-radius: var(--radius-full);
-  margin-top: 6px;
-  overflow: hidden;
-}
-
-.stat-progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--primary) 0%, var(--accent-lavender) 100%);
-  border-radius: var(--radius-full);
-  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Countdown Card */
-.countdown-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  font-size: 0.75rem;
-  font-weight: 700;
-}
-
-.countdown-urgent {
-  background-color: var(--color-high-bg);
-  color: var(--color-high-text);
-  border: 1px solid var(--color-high-border);
-}
-
-.countdown-normal {
-  background-color: var(--primary-subtle);
-  color: var(--primary);
-  border: 1px solid var(--primary-border);
-}
-
-/* Bento Grid Row Stretch for Pomodoro and Tasks */
-.dashboard-main-row {
-  align-items: stretch;
-}
-
-.dashboard-main-row > .col-5,
-.dashboard-main-row > .col-7 {
-  display: flex;
-  flex-direction: column;
-}
-
-.dashboard-main-row > .col-5 > .bento-card,
-.dashboard-main-row > .col-7 > .bento-card {
-  height: 100%;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Dashboard Priority Tasks Widget */
-.dashboard-todo-card {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-#dashboard-task-list,
-.dashboard-task-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  flex: 1;
-  min-height: 0;
-  max-height: 350px !important;
-  overflow-y: auto !important;
-  padding-right: 6px;
-  scrollbar-width: thin;
-  scrollbar-color: #cbd5e1 transparent;
-}
-
-.dashboard-todo-card .task-card {
-  padding: 12px 14px;
-  flex-shrink: 0;
-}
-
-/* Mini Agenda Widget */
-.agenda-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-height: 320px;
-  overflow-y: auto;
-  padding-right: 6px;
-  scrollbar-width: thin;
-  scrollbar-color: #cbd5e1 transparent;
-}
-
-.agenda-item {
-  display: flex;
-  align-items: center;
   gap: 14px;
-  padding: 12px 14px;
-  border-radius: var(--radius-md);
-  background-color: var(--bg-surface-secondary);
-  border: 1px solid transparent;
-  transition: all var(--transition-fast);
+  margin-bottom: 16px;
 }
 
-.agenda-item:hover {
-  background-color: var(--primary-subtle);
-  border-color: var(--primary-border);
-}
-
-.agenda-time {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--primary);
+.metric-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 16px 18px;
   display: flex;
   flex-direction: column;
-  min-width: 65px;
+  justify-content: space-between;
+  gap: 10px;
 }
 
-.agenda-details {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  flex: 1;
-  min-width: 0;
-}
-
-.agenda-title {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.agenda-meta {
-  font-size: 0.775rem;
+.metric-label {
+  font-size: 12px;
   color: var(--text-muted);
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 8px;
+}
+
+.metric-val {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.metric-unit {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.metric-bar {
+  height: 4px;
+  background: var(--surface-3);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.metric-bar > div {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.25s ease;
+}
+
+.dash-right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }

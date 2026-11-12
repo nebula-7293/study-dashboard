@@ -1,85 +1,88 @@
-:root {
-  /* Colors - Lavender Theme & Accents */
-  --primary: #7c3aed;
-  --primary-hover: #6d28d9;
-  --primary-light: #ede9fe;
-  --primary-subtle: #f5f3ff;
-  --primary-border: #ddd6fe;
+/* StudyPulse Design Tokens — Warm Obsidian (Dark) & Cream Paper (Light) */
 
-  --accent-lavender: #8b5cf6;
-  --accent-purple: #a855f7;
-  --accent-pink: #ec4899;
+:root,
+:root[data-theme="dark"] {
+  --bg: #111110;
+  --surface: #191918;
+  --surface-2: #222220;
+  --surface-3: #2a2a27;
+  --border: #2c2b29;
+  --border-subtle: #222120;
+  --text: #f0ede6;
+  --text-muted: #9e9b93;
+  --text-dim: #686660;
 
-  /* Neutrals & Surfaces */
-  --bg-app: #f8fafc;
-  --bg-surface: #ffffff;
-  --bg-surface-secondary: #f1f5f9;
-  --bg-surface-hover: #f8fafc;
-  --bg-elevated: #ffffff;
+  --pill-bg: #f2e8d5;
+  --pill-text: #141413;
+  --amber: #f5b625;
+  --amber-ink: #191610;
+  --coral: #e55b3c;
+  --sage: #52a773;
+  --sky: #5b9bd5;
 
-  /* Borders */
-  --border-subtle: #e2e8f0;
-  --border-medium: #cbd5e1;
-  --border-focus: #a78bfa;
+  /* Distinct Scope Palette: University (Warm Amber/Ochre) vs Personal (Sage Green) */
+  --uni-accent: #f5b625;
+  --uni-bg: rgba(245, 182, 37, 0.13);
+  --uni-border: rgba(245, 182, 37, 0.35);
+  --uni-text: #f7c652;
 
-  /* Typography */
-  --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
-  --text-inverse: #ffffff;
+  --pers-accent: #52a773;
+  --pers-bg: rgba(82, 167, 115, 0.14);
+  --pers-border: rgba(82, 167, 115, 0.35);
+  --pers-text: #72c893;
 
-  /* Status & Urgency Colors */
-  --color-high: #ef4444;
-  --color-high-bg: #fef2f2;
-  --color-high-border: #fecaca;
-  --color-high-text: #b91c1c;
+  /* Urgency & Deadline Tags */
+  --high-bg: rgba(229, 91, 60, 0.14);
+  --high-text: #f07b60;
+  --high-border: rgba(229, 91, 60, 0.3);
 
-  --color-medium: #f59e0b;
-  --color-medium-bg: #fffbeb;
-  --color-medium-border: #fde68a;
-  --color-medium-text: #b45309;
+  --mid-bg: rgba(245, 182, 37, 0.14);
+  --mid-text: #f5b625;
+  --mid-border: rgba(245, 182, 37, 0.3);
 
-  --color-low: #10b981;
-  --color-low-bg: #ecfdf5;
-  --color-low-border: #a7f3d0;
-  --color-low-text: #047857;
+  --low-bg: rgba(82, 167, 115, 0.14);
+  --low-text: #6bc28c;
+  --low-border: rgba(82, 167, 115, 0.3);
+}
 
-  --color-info: #3b82f6;
-  --color-info-bg: #eff6ff;
-  --color-info-border: #bfdbfe;
-  --color-info-text: #1d4ed8;
+:root[data-theme="light"] {
+  --bg: #f3f1ec;
+  --surface: #ffffff;
+  --surface-2: #f7f5f0;
+  --surface-3: #ebe8e0;
+  --border: #e2dfd7;
+  --border-subtle: #ece9e2;
+  --text: #181816;
+  --text-muted: #6e6b64;
+  --text-dim: #9c9890;
 
-  /* Schedule Category Dot Colors */
-  --dot-lecture: #8b5cf6;
-  --dot-lab: #06b6d4;
-  --dot-work: #f59e0b;
-  --dot-seminar: #ec4899;
-  --dot-misc: #64748b;
+  --pill-bg: #181816;
+  --pill-text: #f7f5f0;
+  --amber: #f4b324;
+  --amber-ink: #181816;
+  --coral: #dc4f30;
+  --sage: #388857;
+  --sky: #3b7eb8;
 
-  /* Bento Border Radii */
-  --radius-xs: 6px;
-  --radius-sm: 10px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 26px;
-  --radius-full: 9999px;
+  --uni-accent: #d99600;
+  --uni-bg: #fef5dc;
+  --uni-border: #f5d47e;
+  --uni-text: #8f6200;
 
-  /* Bento Shadows */
-  --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
-  --shadow-sm: 0 2px 6px 0 rgba(15, 23, 42, 0.04), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
-  --shadow-md: 0 8px 20px -4px rgba(15, 23, 42, 0.06), 0 4px 8px -2px rgba(15, 23, 42, 0.03);
-  --shadow-lg: 0 16px 36px -6px rgba(15, 23, 42, 0.08), 0 6px 14px -3px rgba(15, 23, 42, 0.04);
-  --shadow-lavender: 0 10px 25px -4px rgba(124, 58, 237, 0.22);
+  --pers-accent: #2f7d4d;
+  --pers-bg: #e6f4ec;
+  --pers-border: #b4dfc4;
+  --pers-text: #21633b;
 
-  /* Transitions */
-  --transition-fast: 0.15s ease;
-  --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-slow: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --high-bg: #fdece8;
+  --high-text: #c23b1e;
+  --high-border: #f7c8be;
 
-  /* Layout dimensions */
-  --sidebar-width: 260px;
-  --sidebar-collapsed-width: 80px;
-  --header-height: 72px;
-  --bottom-bar-height: 64px;
+  --mid-bg: #fef6df;
+  --mid-text: #9e6c00;
+  --mid-border: #f8dfa0;
+
+  --low-bg: #e7f5ec;
+  --low-text: #256b40;
+  --low-border: #bce3ca;
 }

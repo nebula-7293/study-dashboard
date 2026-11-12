@@ -17,7 +17,13 @@ def register(user_data: UserCreate, session: SessionDep):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="User already exists", headers={"WWW-Authenticate": "Bearer"})
 
     hashed_password = hash_password(user_data.password)
-    new_user = User(email=user_data.email, name=user_data.name, hashed_password=hashed_password)
+    new_user = User(
+        email=user_data.email,
+        name=user_data.name,
+        university=user_data.university,
+        year_of_study=user_data.year_of_study,
+        hashed_password=hashed_password
+    )
     session.add(new_user)
     session.commit()
     session.refresh(new_user)

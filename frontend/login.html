@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - StudyPulse</title>
+    <link rel="stylesheet" href="/css/styles.css?v=3.0" />
+</head>
+<body>
+    <main class="auth-screen">
+        <section class="auth-box">
+            <div class="auth-brand">
+                <!-- Brand header and tab switcher -->
+                <div class="auth-brand-left">
+                    <span class="auth-brand-name">StudyPulse</span>
+                    <button type="button" class="btn btn-xs" id="theme-toggle">Light</button>
+                </div>
+                <div class="seg-group">
+                    <button type="button" class="seg-btn active" id="tab-login">Log in</button>
+                    <button type="button" class="seg-btn" id="tab-register">Register</button>
+                </div>
+            </div> 
+
+            <!-- Error / Success -->
+            <div id="auth-message" class="auth-message hidden" role="alert"></div>
+
+            <!-- Login Form -->
+             <form id="form-login">
+                <div class="field">
+                    <label for="login-email">Email</label>
+                    <input class="input" type="email" id="login-email" placeholder="snow1996@university.edu" required />
+                </div>
+                <div class="field">
+                    <label for="login-password">Password</label>
+                    <input class="input" type="password" id="login-password" placeholder="••••••••" required />
+                </div>
+                <button type="submit" class="btn btn-primary auth-submit" id="login-submit">Continue</button>
+            </form>
+
+            <!-- Register Form -->
+            <form id="form-register" class="hidden">
+                <div class="field">
+                <label for="reg-name">Full name</label>
+                <input class="input" type="text" id="reg-name" placeholder="John Snow" required />
+                </div>
+                <div class="field">
+                <label for="reg-email">Email</label>
+                <input class="input" type="email" id="reg-email" placeholder="snow1996@university.edu" required />
+                </div>
+                <div class="auth-uni-row">
+                <div class="field">
+                    <label for="reg-uni">University</label>
+                    <input class="input" type="text" id="reg-uni" placeholder="Technical University" />
+                </div>
+                <div class="field">
+                    <label for="reg-year">Year</label>
+                    <input class="input mono" type="number" id="reg-year" value="1" min="1" max="6" />
+                </div>
+                </div>
+                <div class="field">
+                <label for="reg-password">Password</label>
+                <input class="input" type="password" id="reg-password" placeholder="••••••••" required />
+                </div>
+                <button type="submit" class="btn btn-primary auth-submit" id="reg-submit">Create account</button>
+            </form>
+        </section>
+    </main>
+     <script type="module" src="/js/auth.js"></script>
+</body>
+</html>
